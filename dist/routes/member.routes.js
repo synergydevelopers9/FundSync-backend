@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const member_controller_1 = require("../controllers/member.controller");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const router = (0, express_1.Router)();
+// Apply JWT authentication and MEMBER role restriction to all paths
+router.use(auth_middleware_1.authenticateJWT);
+router.use((0, auth_middleware_1.requireRole)(['MEMBER']));
+router.get('/dashboard', member_controller_1.getDashboardStats);
+router.get('/profile', member_controller_1.getProfile);
+router.put('/profile', member_controller_1.updateProfile);
+router.post('/change-password', member_controller_1.changePassword);
+router.get('/payments', member_controller_1.getPayments);
+router.get('/notifications', member_controller_1.getNotifications);
+router.patch('/notifications/read', member_controller_1.markNotificationsRead);
+router.get('/tickets', member_controller_1.getSupportTickets);
+router.post('/tickets', member_controller_1.createSupportTicket);
+router.post('/subscribe-plan', member_controller_1.subscribePlan);
+exports.default = router;
