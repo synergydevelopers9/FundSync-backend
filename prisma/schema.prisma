@@ -6,9 +6,9 @@ generator client {
 }
 
 datasource db {
-  // To switch to PostgreSQL, change provider to "postgresql" and update the env URL
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
