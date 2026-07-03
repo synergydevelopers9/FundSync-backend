@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+*.db
+*.db-journal
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+public/receipts/receipt-*.pdf
+public/reports/*.xlsx
+public/backups/backup-*.sql
+.DS_Store
+Thumbs.db
